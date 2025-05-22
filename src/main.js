@@ -22,6 +22,8 @@ const loader = new GLTFLoader()
 let boxModel, boxInstance
 const conveyor1 = new THREE.Group()
 const conveyor2 = new THREE.Group()
+const rackGroup = new THREE.Group()
+
 
 loader.load('/box.gltf', gltf => {
   boxModel = gltf.scene
@@ -43,6 +45,18 @@ loader.load('/conveyor.gltf', gltf => {
   conveyor2.add(second)
   scene.add(conveyor2)
 })
+
+loader.load('/rack.gltf', gltf => {
+  const model = gltf.scene
+
+  const rack1 = model.clone()
+  rack1.position.set(0, -1, 16)
+  rack1.scale.set(2.5, 1.1, 1)
+  rackGroup.add(rack1)
+  scene.add(rackGroup)
+})
+
+
 const boxes = []
 
 // Box movement control
@@ -86,7 +100,9 @@ function animate() {
 
       // 檢查是否超出 z >= 20
       if (mesh.position.z >= 15) {
-        scene.remove(mesh) // 從場景移除
+
+        // mesh.position.z
+        // scene.remove(mesh) // 從場景移除
         boxes.splice(i, 1) // 從陣列移除
       }
     }
