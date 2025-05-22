@@ -15,7 +15,7 @@ const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 
 const light = new THREE.DirectionalLight(0xffffff, 1)
-light.position.set(5, 10, 7)
+light.position.set(-5, 10, -7)
 scene.add(light)
 
 const loader = new GLTFLoader()

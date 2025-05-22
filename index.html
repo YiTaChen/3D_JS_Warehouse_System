@@ -19,6 +19,9 @@
   
     </div>
   </div>
+  <div id="firebase">
+    <img id="firebase_link" src="/firebase_link.png" alt="firebase_link">
+  </div>
   <canvas id="app"></canvas>
   <script type="module" src="/src/main.js"></script>
 </body>
@@ -50,5 +53,34 @@
   document.addEventListener('mouseup', () => {
     isDragging = false;
   });
+
+  const ui2 = document.getElementById('firebase');
+  let isDragging2 = false;
+  let offsetX2 = 0;
+  let offsetY2 = 0;
+
+  // 當滑鼠按下時，開始記錄位置
+  ui.addEventListener('mousedown', (e) => {
+    // 確保不是按在按鈕上（否則會干擾點擊事件）
+    if (e.target.tagName === 'BUTTON') return;
+
+    isDragging2 = true;
+    offsetX2 = e.clientX - ui2.offsetLeft;
+    offsetY2 = e.clientY - ui2.offsetTop;
+  });
+
+  // 拖曳中，移動 UI
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging2) {
+      ui2.style.left = (e.clientX - offsetX2) + 'px';
+      ui2.style.top = (e.clientY - offsetY2) + 'px';
+    }
+  });
+
+  // 放開滑鼠，結束拖曳
+  document.addEventListener('mouseup', () => {
+    isDragging2 = false;
+  });
+
 </script>
 </html>

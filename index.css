@@ -19,6 +19,18 @@
   }
 
 
+#firebase{
+    position: absolute;
+    top: 200px;
+    left: 30px;
+    cursor: move;
+    user-select: none;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+}
+
 #button-container {
 
     display: flex;
@@ -29,4 +41,14 @@
     margin: 10px;
     padding: 30px;
     /* border: 1px solid #000; */
+}
+
+
+
+#firebase_link {
+    width: 200px;
+    height: 200px;
+    /* border-radius: 50%; */
+    margin: 6px;
+    cursor: pointer;
 }
